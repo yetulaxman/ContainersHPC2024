@@ -1,6 +1,6 @@
 ---
 topic: containers
-title: Tutorial1 - Hello-world example
+title: Tutorial2 - Hello-world example
 ---
 
 # Nextflow on Puhti Supercomputer

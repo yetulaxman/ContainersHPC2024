@@ -1,6 +1,6 @@
 ---
 topic: containers
-title: Tutorial2 - FastQC in Nextflow
+title: Tutorial3 - FastQC in Nextflow
 ---
 
 ## Tutorial 2: A Nextflow example with `FastQC` software
