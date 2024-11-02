@@ -31,8 +31,8 @@ author: CSC Training
 
 
 ## 3. Working with Docker Containers 
-### Slides: Basic introduction to Docker containers
-### Slides: Conversion of Docker images to Apptainer image
+### Slides: [Basic introduction to Docker containers](https://a3s.fi/biocontainers2024/intro_docker_2024.html)
+### Slides: [Applications with Docker containers](https://a3s.fi/biocontainers2024/containerised_applications_2024.html)
 
 ###  Tutorials and exercises
 {% for hands-on in items %}
@@ -41,10 +41,9 @@ author: CSC Training
 {% endif %}
 {% endfor %}
 
-## 4. Containerised Applications
-### Slides: Applications with containers
-### Slides: Working with R and Jupyter notebooks
-### Slides: Introduction to Bio-workflows
+## 4. Containers in web applications and workflows
+### Slides: [Rstudio and Jupyter Notebooks](https://a3s.fi/biocontainers2024/notebooks_2024.html)
+### Slides: [Introduction to Bio-workflows](https://a3s.fi/biocontainers2024/workflows_csc_2024.html)
 ###  Tutorials and exercises
 {% for hands-on in items %}
 {% if hands-on.topic == 'containers' %}
