@@ -1,6 +1,6 @@
 ---
-topic: snakemake
-title: Tutorial3 - High-throughput Snakemake workflows
+topic: containers
+title: Tutorial5 - High-throughput Snakemake workflows
 ---
 
 # Running Snakemake workflows at scale on Puhti
