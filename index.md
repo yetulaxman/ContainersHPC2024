@@ -32,7 +32,7 @@ author: CSC Training
 
 ## 3. Working with Docker Containers 
 ### Slides: [Basic introduction to Docker containers](https://a3s.fi/biocontainers2024/intro_docker_2024.html)
-### Slides: [Applications with Docker containers](https://a3s.fi/biocontainers2024/containerised_applications_2024.html)
+### Slides: [Working with containerised applications](https://a3s.fi/biocontainers2024/containerised_applications_2024.html)
 
 ###  Tutorials and exercises
 {% for hands-on in items %}
