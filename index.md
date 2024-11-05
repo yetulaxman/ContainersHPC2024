@@ -43,7 +43,7 @@ author: CSC Training
 
 ## 4. Containers in web applications and workflows
 ### Slides: [Rstudio and Jupyter Notebooks](https://a3s.fi/biocontainers2024/notebooks_2024.html)
-### Slides: [Introduction to Bio-workflows](https://a3s.fi/biocontainers2024/intro_workflows_2024.html)
+### Slides: [Brief Introduction to Bio-workflows](https://a3s.fi/biocontainers2024/intro_workflows_2024.html)
 ### Slides: [Running Nextflow and Snakemake workflows at CSC](https://a3s.fi/biocontainers2024/running_workflows_2024.html)
 ###  Tutorials and exercises
 {% for hands-on in items %}
