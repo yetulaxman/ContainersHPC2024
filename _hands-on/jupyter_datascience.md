@@ -1,6 +1,6 @@
 ---
 topic: containers
-title: Tutorial1 - Launch Jupyter notebook using a pre-built docker image from a container registry
+title: Tutorial1 - Launch custom Jupyter notebook 
 ---
 
 # Launching a custom Jupyter notebook from a pre-built container image
