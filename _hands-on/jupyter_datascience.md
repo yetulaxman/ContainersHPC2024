@@ -1,6 +1,6 @@
 ---
 topic: containers
-title: Tutorial1 - Launch Jupyter notebook on Puhti web interface using a pre-built docker image from a container registry
+title: Tutorial1 - Launch Jupyter notebook using a pre-built docker image from a container registry
 ---
 
 # Launching custome Jupyter notebooks from pre-built docker image from a container registry
