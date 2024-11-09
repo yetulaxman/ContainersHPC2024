@@ -8,6 +8,12 @@ title: Tutorial4 - Run nf-core pipelines at CSC
 - You have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/).
 - Your account belongs to a project [that has access to the Puhti service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
 
+In this tutorial, you will learn how to: 
+ - Understand nf-core pipeline profiles
+ - deploy pipelines as a batch job
+
+
+Containerised applications are highly portable and reproducible for scientific applications. Fortunately, Nextflow smoothly supports integration with popular containers ( e.g., [Docker](https://www.nextflow.io/docs/latest/docker.html) and [Singularity](https://www.nextflow.io/docs/latest/singularity.html)) to provide a light-weight virtualisation layer for running software applications. Please note that you can only work with *Singularity/Apptainer* containers on Puhti as *docker* containers require prevelized access which CSC users **don't** have it on Puhti.
 
 💬 nf-core is a community effort to collect a curated set of analysis pipelines built using Nextflow. nf-core facilitates  standardisation of Nextflow pipelines with best practices, guidelines, and templates for bioinformatics community. These workflows are modular, scalable, and portable. Here we use [single-cell RNA-seq pipeline](https://github.com/nf-core/scrnaseq/tree/2.7.1) as an example nf-core pipeline.
 
@@ -59,5 +65,10 @@ sbatch scrna_nfcore.sh
    # or
    squeue -u $USER
    ```
+
+## Think of the following aspects of single-cell RNA-seq pipeline:
+1. Where are the actual codes  (local path) of nextflow pipeline located ? (*tip*: check slurm output file for more details or use *nextflow info nf-core/scrnaseq*)
+2. What kind of nextflow *profiles* are used in the above batch script? Also find out the details of how those profiles are described in the configuration file?
+3. Find out the different commandline options associated with scrnaseq pipeline ?(*hint*: use the following command: nextflow run nf-core/scrnaseq  --help)
 
 
