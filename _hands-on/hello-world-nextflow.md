@@ -33,12 +33,13 @@ mkdir -p  /scratch/project_xxxx/$USER/nextflow_tutorial && cd /scratch/project_x
 Lanuch an [interactive session](https://docs.csc.fi/computing/running/interactive-usage/) on Puhti as below:
 ```
 sinteractive -c 2 -m 4G -d 250 -A project_2xxxx  # replace actual project number here
-module load nextflow/23.04.3 
+module load nextflow/23.04.3                     # Load nextflow module
 ```
+‼️ Please note that one has to load a module (in this case nextflow) with a version. Otherwise, the latest version of stable module installed at that point is used. For the reproducibility point of view, make sure to load versions of all tools in a pipeline.
 
 ## Tutorial 1: Hello-world example 
 
-In this hello-world tutorial, you will learn how to run a Nextflow script as well as understand the default location of resulting output files.  Copy the below script to a file named, hello-world.nf
+This "Hello-world" minimalist example demonstrates the basic syntax of Nextflow for a process. In this tutorial, you will learn how to run a Nextflow script as well as understand the default location of resulting output files. Copy the below script to a file named, hello-world.nf
 
 ```nextflow
 #!/usr/bin/env nextflow
