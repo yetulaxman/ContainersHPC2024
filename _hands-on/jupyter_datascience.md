@@ -17,7 +17,7 @@ title: Tutorial1 - Launch Jupyter notebook using a pre-built docker image from a
     
 ## Search a data science notebook image from a Docker registry
 
-We can use a data science Jupyter notebook managed by the [Jupyter project](https://github.com/jupyter) as an example . One can find such a ready-made Docker container image in Docker registries such as [Docker Hub](https://hub.docker.com/) and [Red Hat Quay](https://quay.io/). On these registries, you can search with keyword "data sciene" and then select "jupyter/datascience-notebook" to see the images for Jupyter notebook.
+We can use a data science Jupyter notebook managed by the [Jupyter project](https://github.com/jupyter) as an example here . One can find such a ready-made Docker container image in Docker registries such as [Docker Hub](https://hub.docker.com/) and [Red Hat Quay](https://quay.io/). On these registries, you can search with keyword "data sciene" and then select "jupyter/datascience-notebook" to see the images for Jupyter notebook.
 
 ## Install a Jupyter notebook docker image to *projappl* directory using *tykky* container wrapper
 While the container images can be pulled and used directly as singularity containers on HPC systems, CSC’s [Tykky](https://docs.csc.fi/computing/containers/tykky/) container wrapper serves an easy installation method. For the purpose of this tutorial, we will use a data science docker image from [Docker Hub](https://hub.docker.com/r/jupyter/datascience-notebook). You can install Jupyter notebook environment to *projappl* directory as below:  
