@@ -43,7 +43,7 @@ ssh -L <port_on_login_node>:localhost:container_port <username>@<compute_hostnam
                                                                                         # interactive session change "container_port" number where rstudio is exposed on 
                                                                                          # compute node); 
  ```
-‼️ Note! Port number on the login node (i.e., \<port_on_login_node\>) in the above command has to be unique accross the course participants as login node is shared among the users. So try with a
+‼️ Note! Port number on the login node (i.e., port_on_login_node) in the above command has to be unique accross the course participants as login node is shared among the users. So try with a 
 random number (i.e., between 7000 and 9000) to be unique. 
 
 Point your browser to http://localhost:8787. If successful, rstudio should appear now on the browser. You need credentials to login to rstudio. Copy and paste rstudio username and passpassword from the terminal where you have launched rstudio on Puhti.
