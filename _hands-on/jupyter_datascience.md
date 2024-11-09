@@ -3,7 +3,7 @@ topic: containers
 title: Tutorial1 - Launch Jupyter notebook using a pre-built docker image from a container registry
 ---
 
-# Launching custome Jupyter notebooks from pre-built docker image from a container registry
+# Launching custom Jupyter notebooks from a pre-built container image
 
 In this tutorial, you will learn how to:
   - Install Jupyter notebook based on a pre-existing docker image from a docker registry.
