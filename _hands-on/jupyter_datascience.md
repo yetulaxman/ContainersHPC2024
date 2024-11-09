@@ -5,7 +5,12 @@ title: Tutorial1 - Launch Jupyter notebook using a pre-built docker image from a
 
 # Launching a custom Jupyter notebook from a pre-built container image
 
-In this tutorial, you will learn how to:
+> This tutorial is done on **Puhti**, which requires that:
+
+- You have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/).
+- Your account belongs to a project [that has access to the Puhti service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
+
+💬 In this tutorial, you will learn how to:
   - Install Jupyter notebook based on a pre-existing docker image from a docker registry.
   - Launch the Jupyter notebook from [Puhti Web Interface](https://www.puhti.csc.fi/public/).
     
