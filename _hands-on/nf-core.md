@@ -17,6 +17,19 @@ Containerised applications are highly portable and reproducible for scientific a
 
 💬 nf-core is a community effort to collect a curated set of analysis pipelines built using Nextflow. nf-core facilitates  standardisation of Nextflow pipelines with best practices, guidelines, and templates for bioinformatics community. These workflows are modular, scalable, and portable. Here we use [single-cell RNA-seq pipeline](https://github.com/nf-core/scrnaseq/tree/2.7.1) as an example nf-core pipeline.
 
+In this tutorial, we will use Puhti supercomputer. First login to Puhti using SSH (or by opening a login node shell in the [Puhti web interface](https://www.puhti.csc.fi)):
+  
+```bash
+ssh <username>@puhti.csc.fi    # replace <username> with your CSC username, e.g. myname@puhti.csc.fi
+```
+And go to scratch directory to submit nextflow job:
+
+```bash
+mkdir -p /scratch/<project>/$USER/    # replace <project> with your CSC project, e.g. project_2001234
+cd /scratch/<project>/$USER/  && mkdir -p nf-core && cd nf-core
+
+```
+
 ## Wrap nf-core pipeline as a normal batch job
 
 Here is an example batch script to run the pipeline on Puhti:
