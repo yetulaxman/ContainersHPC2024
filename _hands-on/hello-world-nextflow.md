@@ -1,16 +1,15 @@
 ---
 topic: containers
-title: Tutorial2 - Hello-world example
+title: Tutorial2 - Hello-world Nextflow example
 ---
 
-# Nextflow on Puhti Supercomputer
-Running and managing workflows for bioinformatics applications can be challenging as the workflows usually are fragile eco-systems of several software tools and their dependencies. We therefore need a workflow manager like Nextflow to manage our scientific workflow. [Nextflow](https://www.nextflow.io/docs/latest/index.html) is a [groovy-based](https://en.wikipedia.org/wiki/Apache_Groovy) language for expressing the entire workflow in a single script and also facilitates the ease of working with workflows by rendering several useful features as mentioned below: 
- - Workflow management
- - Reproducibility
- - Portability
- - Parallelization
- - Easy prototyping 
- - Partial resumption
+# Hello-world Nextflow tutorial on Puhti Supercomputer
+Running and managing workflows for bioinformatics applications can be challenging as the workflows usually are fragile eco-systems of several software tools and their dependencies. We therefore need a workflow manager like Nextflow to manage our scientific workflow. 
+
+> This tutorial is done on Puhti, which requires that:
+   - you have a user account at CSC
+   - your account belongs to a project that has access to the Puhti service.
+
 
 ## Learning Objectives
 Upon completion of these tutorials in course, you will be able to learn: 
