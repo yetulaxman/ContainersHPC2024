@@ -64,6 +64,8 @@ tar -xavf course_notebook.tar.gz
    
  4. This may take a while before seeing "Connect to Jupyter" button upon successful launching. Once Jupyter notebook is opened, navigate to your own $USER area (under /projappl/project_200xxxx/) where you have downloaded Python notebook earlier. Finally, click "explore_datascience.ipynb" to open a Python notebook on your browser.
 
+‼️  Please note that the course reservation (name: container_course) will only on the course day for the members of course project
+
 ###  Useful CSC documentation
 
 - [Tykky containerisation](https://docs.csc.fi/computing/containers/tykky/)
