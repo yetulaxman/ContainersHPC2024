@@ -1,6 +1,6 @@
 ---
 topic: containers
-title: Tutorial1 - Custom Rstudio on Puhti
+title: Tutorial6 - Custom Rstudio on Puhti
 ---
 In this tutorial, you will learn how to:
    - Pull a Rstudio image from DockerHub
