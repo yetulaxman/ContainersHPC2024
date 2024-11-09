@@ -5,10 +5,11 @@ title: Tutorial1 - Launch Jupyter notebook using a pre-built docker image from a
 
 # Launching a custom Jupyter notebook from a pre-built container image
 
-> This tutorial is done on **Puhti**, which requires that:
+> This tutorial is done on **Puhti and its web interface**, which requires that:
 
 - You have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/).
 - Your account belongs to a project [that has access to the Puhti service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
+
 
 💬 In this tutorial, you will learn how to:
   - Install Jupyter notebook based on a pre-existing docker image from a docker registry.
@@ -16,10 +17,10 @@ title: Tutorial1 - Launch Jupyter notebook using a pre-built docker image from a
     
 ## Search a data science notebook image from a Docker registry
 
-For illustration, let's use a data science Jupyter notebook managed by the [Jupyter project](https://github.com/jupyter). One can find such ready-made Docker container images in Docker registries such as [Docker Hub](https://hub.docker.com/) and [Red Hat Quay](https://quay.io/). On these registries, you can search with keyword "data sciene" and then select "jupyter/datascience-notebook" to see the images for Jupyter notebook.
+We can use a data science Jupyter notebook managed by the [Jupyter project](https://github.com/jupyter) as an example . One can find such a ready-made Docker container image in Docker registries such as [Docker Hub](https://hub.docker.com/) and [Red Hat Quay](https://quay.io/). On these registries, you can search with keyword "data sciene" and then select "jupyter/datascience-notebook" to see the images for Jupyter notebook.
 
-## Install a Jupyter docker image to *projappl* directory using *tykky* container wrapper
-While the container images could be pulled and used directly as singularity containers on HPC systems, CSC’s [Tykky](https://docs.csc.fi/computing/containers/tykky/) container wrapper provides an easy method to install them to be usable without any special container commands. For the purpose of this tutorial, we use a data science image from [Docker Hub](https://hub.docker.com/r/jupyter/datascience-notebook). Please prepare and install Jupyter notebook environment to *projappl* directory as below:  
+## Install a Jupyter notebook docker image to *projappl* directory using *tykky* container wrapper
+While the container images can be pulled and used directly as singularity containers on HPC systems, CSC’s [Tykky](https://docs.csc.fi/computing/containers/tykky/) container wrapper serves an easy installation method. For the purpose of this tutorial, we will use a data science docker image from [Docker Hub](https://hub.docker.com/r/jupyter/datascience-notebook). You can install Jupyter notebook environment to *projappl* directory as below:  
 
 ```bash
 # Navigate to /projappl area of your course project 
@@ -35,9 +36,9 @@ wrap-container -w /opt/conda/bin docker://docker.io/jupyter/datascience-notebook
 ```
 Upon succesfull installation, the executables of the Jupyter notebook will be available in the directory /projappl/project_200xxxx/$USER/Notebook/bin. 
 
-## Download a sample Jupyter notebook 
+## Download a simple python notebook for testing 
 
-You can download an example notebook to perform basic data analysis tasks using the installed Jupyter notebook as below: 
+You can download an example python notebook to perform basic data analysis tasks inside the installed Jupyter notebook as below: 
 ```bash
 cd /projappl/project_200xxxx/$USER
 wget https://a3s.fi/CSC_training/course_notebook.tar.gz
@@ -46,10 +47,9 @@ tar -xavf course_notebook.tar.gz
 
 ## Launch the installed Jupyter notebook from the Puhti web interface
 
-1. Log in to [Puhti web interface](https://www.puhti.csc.fi)
-2. Login with CSC/HAKA/VIRTU credentials (Please note that a user should have accepted Puhti service in [myCSC](https://my.csc.fi/welcome) 
-    page under a course (or own) project before using this service). 
-3. Once login is successful, select "Jupyter" icon from the pinned apps on the landing page.  Once you open the Jupyter, use the following settings:
+1. Login to [Puhti web interface](https://www.puhti.csc.fi)
+2. Login with CSC/HAKA/VIRTU credentials 
+3. Once login is successful, select "Jupyter" icon from the pinned apps on the landing page.  Then open the Jupyter notebook and use the following settings:
     Reservation: use course reservation if available  
     Project: project_20xxxx   
     Partition: small  
@@ -62,7 +62,7 @@ tar -xavf course_notebook.tar.gz
     Working directory: /projappl/project_200xxxx/  
     and finally "Launch" notebook  
    
- 4. This may take a while before seeing "Connect to Jupyter" button upon successful launching. Once Jupyter notebook is opened, navigate to your own $USER area (under /projappl/project_200xxxx/) where you have downloaded example Jupyter notebook earlier. Finally, click on "explore_datascience.ipynb" to open a sample Jupyter notebook on your browser.
+ 4. This may take for a while before seeing "Connect to Jupyter" button upon successful launching. Once Jupyter notebook is opened, navigate to your own $USER area (under /projappl/project_200xxxx/) where you have downloaded example Jupyter notebook earlier. Finally, click on "explore_datascience.ipynb" to open a sample Jupyter notebook on your browser.
 
 ###  Useful CSC documentation
 
