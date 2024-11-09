@@ -20,7 +20,7 @@ title: Tutorial1 - Launch Jupyter notebook using a pre-built docker image from a
 We can use a data science Jupyter notebook managed by the [Jupyter project](https://github.com/jupyter) as an example here . One can find such a ready-made Docker container image in Docker registries such as [Docker Hub](https://hub.docker.com/) and [Red Hat Quay](https://quay.io/). On these registries, you can search with keyword "data sciene" and then select "jupyter/datascience-notebook" to see the images for Jupyter notebook.
 
 ## Install a Jupyter notebook docker image to *projappl* directory using *tykky* container wrapper
-While the container images can be pulled and used directly as singularity containers on HPC systems, CSC’s [Tykky](https://docs.csc.fi/computing/containers/tykky/) container wrapper serves an easy installation method. For the purpose of this tutorial, we will use a data science docker image from [Docker Hub](https://hub.docker.com/r/jupyter/datascience-notebook). You can install Jupyter notebook environment to *projappl* directory as below:  
+While the container images can be pulled and used directly as singularity containers on HPC systems, CSC’s [Tykky](https://docs.csc.fi/computing/containers/tykky/) container wrapper serves an easy installation method for containers. For the purpose of this tutorial, we will use a data science docker image from [Docker Hub](https://hub.docker.com/r/jupyter/datascience-notebook). You can install Jupyter notebook environment to */projappl* directory as below:  
 
 ```bash
 # Navigate to /projappl area of your course project 
@@ -36,7 +36,7 @@ wrap-container -w /opt/conda/bin docker://docker.io/jupyter/datascience-notebook
 ```
 Upon succesfull installation, the executables of the Jupyter notebook will be available in the directory /projappl/project_200xxxx/$USER/Notebook/bin. 
 
-## Download a simple python notebook for testing 
+## Download a simple python notebook for testing the installed environment
 
 You can download an example python notebook to perform basic data analysis tasks inside the installed Jupyter notebook as below: 
 ```bash
@@ -62,7 +62,7 @@ tar -xavf course_notebook.tar.gz
     Working directory: /projappl/project_200xxxx/  
     and finally "Launch" notebook  
    
- 4. This may take for a while before seeing "Connect to Jupyter" button upon successful launching. Once Jupyter notebook is opened, navigate to your own $USER area (under /projappl/project_200xxxx/) where you have downloaded example Jupyter notebook earlier. Finally, click on "explore_datascience.ipynb" to open a sample Jupyter notebook on your browser.
+ 4. This may take for a while before seeing "Connect to Jupyter" button upon successful launching. Once Jupyter notebook is opened, navigate to your own $USER area (under /projappl/project_200xxxx/) where you have downloaded python notebook earlier. Finally, click on "explore_datascience.ipynb" to open a sample python notebook on your browser.
 
 ###  Useful CSC documentation
 
