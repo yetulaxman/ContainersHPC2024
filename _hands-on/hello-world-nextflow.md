@@ -14,8 +14,8 @@ Running and managing workflows for bioinformatics applications can be challengin
 ## Learning Objectives
 Upon completion of these tutorials in course, you will be able to learn: 
 - The basic understanding of how Nextflow works
-- The deployment of Nextflow scripts on Puhti supercomputer
-- How to use Singularity containers with Nextflow for your analysis
+- The deployment of Nextflow scripts on interactive node
+- The inspection of results
 
 
 ## Set up your work environment for tutorials on Puhti
@@ -32,24 +32,48 @@ mkdir -p  /scratch/project_xxxx/$USER/nextflow_tutorial && cd /scratch/project_x
 
 Lanuch an [interactive session](https://docs.csc.fi/computing/running/interactive-usage/) on Puhti as below:
 ```
-sinteractive -c 2 -m 4G -d 250 -A project_xxxx  # replace actual project number here
-module load nextflow
+sinteractive -c 2 -m 4G -d 250 -A project_2xxxx  # replace actual project number here
+module load nextflow/23.04.3 
 ```
 
 ## Tutorial 1: Hello-world example 
-In this Hello-world tutorial, you will learn how to run a Nextflow script as well as understand the default location of resulting output files.
 
-Download course material from CSC's [`allas`](https://docs.csc.fi/data/Allas/) object storage as shown below:
-
-```bash
-wget https://a3s.fi/nextflow/tutorial_demo.tar.gz
-tar -xavf tutorial_demo.tar.gz && rm tutorial_demo.tar.gz
-```
-
-After unpacking the `tutorial_demo.tar.gz` file, you can see `hello_demo` folder which has hello-world script (ending with `.nf`) for running this demo. Execute the script by entering the following command on your interactive Puhti terminal: 
+In this hello-world tutorial, you will learn how to run a Nextflow script as well as understand the default location of resulting output files.  Copy the below script to a file named, hello-world.nf
 
 ```nextflow
-cd hello_demo
+#!/usr/bin/env nextflow
+  
+greets = Channel.fromList(["Moi", "Ciao", "Hello", "Hola","Bonjour"])
+
+/*
+ * Use echo to print 'Hello !' in different languages to a file
+ */
+
+process sayHello {
+
+  input:
+    val greet
+
+  output:
+    path "${greet}.txt"
+
+  script:
+    """
+    echo ${greet} > ${greet}.txt
+    """
+}
+
+workflow {
+
+    // Print  a greeting
+    sayHello(greets)
+}
+
+```
+
+ Execute the script by entering the following command on your interactive Puhti terminal: 
+
+```nextflow
 nextflow run hello-world.nf
 ```
 This script defines one process named `sayHello`. This process takes a set of greetings from different languages and then writes each one to a separate file.
@@ -57,10 +81,10 @@ This script defines one process named `sayHello`. This process takes a set of gr
 The resulting terminal output would look similar to the text shown below:
 
 ```nextflow
-N E X T F L O W  ~  version 20.07.1
-Launching `hello-world.nf` [cheeky_shaw] - revision: 3ffdbdd5c7
+N E X T F L O W  ~  version 23.04.3
+Launching `hello-world.nf` [intergalactic_panini] DSL2 - revision: 880a4a2dfd
 executor >  local (5)
-[e2/9aa8c8] process > sayHello (5) [100%] 5 of 5 ✔
+[a0/bdf83f] process > sayHello (5) [100%] 5 of 5 ✔
 ```
 #### Where are output files created from the above hello-world example?
 
