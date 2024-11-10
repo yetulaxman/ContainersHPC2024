@@ -5,8 +5,8 @@ title: Tutorial3 - FastQC in Nextflow
 
 ## Tutorial 2: A Containerised Nextflow with `FastQC` software
 In this tutorial,  let's use a [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) analysis tool that involves working with samples from sequencing experiments. Here, we will learn how to:
-- use containers in Nextflow pipeline
-- run nextflow as a batch job
+- use containers in a Nextflow pipeline
+- run Nextflow pipeline as a batch job
 - review the results
   
 💬 Containerised applications are highly portable and reproducible for scientific applications. Fortunately, Nextflow smoothly supports integration with popular containers ( e.g., [Docker](https://www.nextflow.io/docs/latest/docker.html) and [Singularity](https://www.nextflow.io/docs/latest/singularity.html)) to provide a light-weight virtualisation layer for running software applications. Please note that you can only work with *Singularity/Apptainer* containers on Puhti as *docker* containers require prevelized access which CSC users **don't** have it on Puhti.
@@ -24,7 +24,7 @@ wget https://a3s.fi/nextflow/fastqc_nextflow.tar.gz
 tar -xavf fastqc_nextflow.tar.gz && rm fastqc_nextflow.tar.gz
 ```
 
-The downloaded `fastqc_nextflow` folder has the necessary files for running this tutorial. You can use your favourite editor (e.g., nano/vi/vim) to view the Nextflow script (fastqc.nf) and understand the FastQC commands that are run inside the container. And also check the configuration file ("nextflow.config") to understand how to activate singularity/apptainer container for this workflow. 
+The downloaded `fastqc_nextflow` folder has the necessary files for running this tutorial. You can use your favourite editor (e.g., nano/vi/vim) to view the Nextflow script (fastqc.nf) and understand the FastQC commands that are run inside the container. Also, check the configuration file ("nextflow.config") to understand how to activate singularity/apptainer container for this workflow. 
 
 ```bash
 cd fastqc_nextflow
@@ -65,8 +65,8 @@ Replace <project> with the correct project number and copy the resulting script 
 ```bash
 sbatch nextflow_fastqc.sh 
 ```
-Once Nextflow job gets resources on HPC cluster, the job would get executed. The script will pull the necessary container images on the fly and run the FastQC analysis inside of the container.
-Monitor slurm output file (slurm-<jobid>.out file) in the same directory. Once analysis is finished, you can see that *FastqQC* analysis was performed as shown below:  
+Once Nextflow job gets resources on HPC cluster, the job would get executed. The script will pull the necessary container images on the fly and run the FastQC analysis inside the container.
+Monitor slurm output file (slurm-\<jobid\>.out file) in the same directory. Once the analysis is finished, you can see that *FastqQC* analysis was performed as shown below:  
 
 ```bash
 ls -l $PWD/work/*/*
@@ -93,7 +93,7 @@ You can see that *FastQC* analysis was performed on a new set of samples now as 
 ```bash
 ls -l $PWD/work/*/*
 ```
-> **_NB_**: single dash (`-`) represents core Nextflow parameters (e.g., *-resume*). Double dash (`--`) represents user-defined and completely extensible one -- they are used to populate `params`.
+> Note! single dash (`-`) represents core Nextflow parameters (e.g., *-resume*). Double dash (`--`) represents user-defined and completely extensible one -- they are used to populate `params`.
 
 ### Moving results to a convenient directory
 
