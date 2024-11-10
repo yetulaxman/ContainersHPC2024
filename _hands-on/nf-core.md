@@ -2,32 +2,31 @@
 topic: containers
 title: Tutorial4 - Run nf-core pipelines at CSC
 ---
-# Running nf-core pipeline on Puhti 
+# Running nf-core pipeline at CSC 
 
-> This tutorial is done on **Puhti**, which requires that:
+> This tutorial needs accesss to **Puhti**, which requires that:
 - You have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/).
 - Your account belongs to a project [that has access to the Puhti service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
 
-In this tutorial, you will learn how to: 
- - Understand nf-core pipeline profiles
- - deploy pipelines as a batch job
-
-
-Containerised applications are highly portable and reproducible for scientific applications. Fortunately, Nextflow smoothly supports integration with popular containers ( e.g., [Docker](https://www.nextflow.io/docs/latest/docker.html) and [Singularity](https://www.nextflow.io/docs/latest/singularity.html)) to provide a light-weight virtualisation layer for running software applications. Please note that you can only work with *Singularity/Apptainer* containers on Puhti as *docker* containers require prevelized access which CSC users **don't** have it on Puhti.
+In this tutorial, you will learn to: 
+ - Understand  nf-core pipelines
+ - Deploy pipelines as a batch job
 
 💬 nf-core is a community effort to collect a curated set of analysis pipelines built using Nextflow. nf-core facilitates  standardisation of Nextflow pipelines with best practices, guidelines, and templates for bioinformatics community. These workflows are modular, scalable, and portable. Here we use [single-cell RNA-seq pipeline](https://github.com/nf-core/scrnaseq/tree/2.7.1) as an example nf-core pipeline.
+
+## Login to Puhti supercomputer
 
 In this tutorial, we will use Puhti supercomputer. First login to Puhti using SSH (or by opening a login node shell in the [Puhti web interface](https://www.puhti.csc.fi)):
   
 ```bash
 ssh <username>@puhti.csc.fi    # replace <username> with your CSC username, e.g. myname@puhti.csc.fi
 ```
-And go to scratch directory to submit nextflow job:
+
+And navigate to a scratch directory to submit Nextflow job:
 
 ```bash
-mkdir -p /scratch/<project>/$USER/    # replace <project> with your CSC project, e.g. project_2001234
+mkdir -p /scratch/<project>/$USER/                               # replace <project> with your CSC project, e.g. project_2001234
 cd /scratch/<project>/$USER/  && mkdir -p nf-core && cd nf-core
-
 ```
 
 ## Wrap nf-core pipeline as a normal batch job
@@ -79,9 +78,9 @@ sbatch scrna_nfcore.sh
    squeue -u $USER
    ```
 
-## Think of the following aspects of single-cell RNA-seq pipeline:
-1. Where are the actual codes  (local path) of nextflow pipeline located ? (*tip*: check slurm output file for more details or use *nextflow info nf-core/scrnaseq*)
-2. What kind of nextflow *profiles* are used in the above batch script? Also find out the details of how those profiles are described in the configuration file?
-3. Find out the different commandline options associated with scrnaseq pipeline ?(*hint*: use the following command: nextflow run nf-core/scrnaseq  --help)
+##  (Bonus) Think of the following aspects of single-cell RNA-seq pipeline:
+1. Where are the actual codes  (local path) of Nextflow pipeline located ? (*tip*: check slurm output file for more details or use *nextflow info nf-core/scrnaseq*)
+2. What kind of Nextflow *profiles* are used in the above batch script? Also find out the details of how those profiles are described in the configuration file?
+3. Find out the different commandline line options associated with scrnaseq pipeline ?( *hint*: use the following command: nextflow run nf-core/scrnaseq  --help)
 
 
