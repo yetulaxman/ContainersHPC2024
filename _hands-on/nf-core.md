@@ -9,8 +9,8 @@ title: Tutorial4 - Run nf-core pipelines at CSC
 - Your account belongs to a project [that has access to the Puhti service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
 
 In this tutorial, you will learn to: 
- - Understand  nf-core pipelines
- - Deploy pipelines as a batch job
+ - gain some understanding of [nf-core pipelines](https://nf-co.re/) 
+ - Deploy a nf-core pipeline as a batch job
 
 💬 nf-core is a community effort to collect a curated set of analysis pipelines built using Nextflow. nf-core facilitates  standardisation of Nextflow pipelines with best practices, guidelines, and templates for bioinformatics community. These workflows are modular, scalable, and portable. Here we use [single-cell RNA-seq pipeline](https://github.com/nf-core/scrnaseq/tree/2.7.1) as an example nf-core pipeline.
 
@@ -31,7 +31,7 @@ cd /scratch/<project>/$USER/  && mkdir -p nf-core && cd nf-core
 
 ## Wrap nf-core pipeline as a normal batch job
 
-Here is an example batch script to run the pipeline on Puhti:
+Here is an example batch script to run nf-core pipeline on Puhti:
 ```bash
 #!/bin/bash
 #SBATCH --time=01:00:00
@@ -46,7 +46,7 @@ export SINGULARITY_CACHEDIR=$PWD
 
 # This is just to avoid some annoying warnings
 unset XDG_RUNTIME_DIR
-unset XDG_RUNTIME_DIR
+
 
 # Load Nextflow on Puhti
 module load nextflow/23.04.3
@@ -68,7 +68,7 @@ sbatch scrna_nfcore.sh
 ```
 💬 When you are running a nf-core  pipeline directly using Nextflow as above, all the GitHub scripts of a given pipeline are download to a directory: ```$HOME/.nextflow/assets/nf-core/```. You can navigate to the directory and explore Nextflow script and configurations settings. Alternatively, you can clone a GitHub repository of a nf-core pipeline and run the pipeline from the same directory.
 
-## Monitor the status of submitted *Slurm* job:
+## Monitor the status of submitted *Slurm* job
 
    ```
    squeue -j <slurmjobid>
@@ -78,9 +78,9 @@ sbatch scrna_nfcore.sh
    squeue -u $USER
    ```
 
-##  (Bonus) Think of the following aspects of single-cell RNA-seq pipeline:
-1. Where are the actual codes  (local path) of Nextflow pipeline located ? (*tip*: check slurm output file for more details or use *nextflow info nf-core/scrnaseq*)
-2. What kind of Nextflow *profiles* are used in the above batch script? Also find out the details of how those profiles are described in the configuration file?
-3. Find out the different commandline line options associated with scrnaseq pipeline ?( *hint*: use the following command: nextflow run nf-core/scrnaseq  --help)
+##  (Bonus) Think of the following aspects of Single-cell RNA-seq pipeline
+1. Where are the actual codes  (local path) of Nextflow pipeline located? (*tip*: check slurm output file for more details or use *nextflow info nf-core/scrnaseq*)
+2. What kind of Nextflow *profiles* are used in the above batch script? Also, find out how those profiles are described in the configuration file?
+3. Find out the different mondatory command line options associated with scrnaseq pipeline?( *hint*: use the following command: nextflow run nf-core/scrnaseq  --help)
 
 
