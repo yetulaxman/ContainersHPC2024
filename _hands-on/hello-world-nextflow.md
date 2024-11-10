@@ -18,7 +18,7 @@ Upon completion of these tutorials in course, you will be able to learn:
 - The inspection of results
 
 
-## Set up your work environment for tutorials on Puhti
+## Setup your work environment for tutorials on Puhti
 This hands-on tutorial uses Puhti supercomputer for executing Nextflow scripts for interactive and batch jobs. One therefore needs to have either a training or user account at CSC to access Puhti.
 
 Login to Puhti using `ssh` command followed by making a work directory named `nextflow_tutorial` on *scratch* drive as shown below: 
