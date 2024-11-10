@@ -3,12 +3,13 @@ topic: containers
 title: Tutorial3 - FastQC in Nextflow
 ---
 
-## Tutorial 2: A Nextflow example with `FastQC` software
+## Tutorial 2: A Containerised Nextflow with `FastQC` software
 In this tutorial,  let's use a [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) analysis tool that involves working with samples from sequencing experiments. Here, we will learn how to:
 - use containers in Nextflow pipeline
 - run nextflow as a batch job
 - review the results
   
+💬 Containerised applications are highly portable and reproducible for scientific applications. Fortunately, Nextflow smoothly supports integration with popular containers ( e.g., [Docker](https://www.nextflow.io/docs/latest/docker.html) and [Singularity](https://www.nextflow.io/docs/latest/singularity.html)) to provide a light-weight virtualisation layer for running software applications. Please note that you can only work with *Singularity/Apptainer* containers on Puhti as *docker* containers require prevelized access which CSC users **don't** have it on Puhti.
 
 ### Understand the container setup for FASTQC software
 Nextflow pipelines usually contain many analysis steps and often need multiple containers to run a pipeline. However, for this tutorial we start with one analysis (FastQc analysis) to explain the concept of containerised workflow. The material for this tutorial can be downloaded from Allas object storage as below:
