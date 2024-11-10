@@ -1,16 +1,20 @@
 ---
 topic: containers
-title: Tutorial3 - FastQC in Nextflow
+title: Tutorial3 - Containerised FastQC in Nextflow
 ---
 
-## Tutorial 2: A Containerised Nextflow with `FastQC` software
-In this tutorial,  let's use a [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) analysis tool that involves working with samples from sequencing experiments. Here, we will learn how to:
-- use containers in a Nextflow pipeline
-- run Nextflow pipeline as a batch job
-- review the results
+# Containerised Nextflow with `FastQC` software
+
+> This tutorial is done on **Puhti**, which requires that:
+- You have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/).
+- Your account belongs to a project [that has access to the Puhti service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
   
 💬 Containerised applications are highly portable and reproducible for scientific applications. Fortunately, Nextflow smoothly supports integration with popular containers ( e.g., [Docker](https://www.nextflow.io/docs/latest/docker.html) and [Singularity](https://www.nextflow.io/docs/latest/singularity.html)) to provide a light-weight virtualisation layer for running software applications. Please note that you can only work with *Singularity/Apptainer* containers on Puhti as *docker* containers require prevelized access which CSC users **don't** have it on Puhti.
-
+You will use a [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) analysis tool that involves working with samples from sequencing experiments. Here, you will learn how to:
+- use containers in a Nextflow pipeline
+- run Nextflow pipeline as a batch job
+- few basic hacks on the pipeline
+  
 ### Understand the container setup for FASTQC software
 Nextflow pipelines usually contain many analysis steps and often need multiple containers to run a pipeline. However, for this tutorial we start with one analysis (FastQc analysis) to explain the concept of containerised workflow. The material for this tutorial can be downloaded from Allas object storage as below:
 
