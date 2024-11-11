@@ -6,9 +6,9 @@ author: CSC Training
 {% assign items = site.hands-on |  sort: "title" %}
 
 ## 1. Introduction to Containers
-### Slides: Brief Introduction to CSC HPC Environments
-### Slides: Basics of Containers
-### Slides: Tykky Wrapper Containerisation
+### Slides: [Brief Introduction to CSC HPC Environments](https://a3s.fi/biocontainers2024/CSC_HPC_Systems.html)
+### Slides: [Introduction to Containers](https://a3s.fi/biocontainers2024/Introduction_to_containers.html)
+### Slides: [Tykky Container Wrapper](https://a3s.fi/biocontainers2024/Container_wrapper.html)
 
 ###  Tutorials and exercises
 {% for hands-on in items %}
@@ -18,8 +18,8 @@ author: CSC Training
 {% endfor %}
 
 ## 2. Introduction to Apptainer/Singularity containers
-### Slides:  Introduction to Singularity/Apptainer
-### Slides:  Building Apptainer/Singularity container images
+### Slides:  [Basic Usage of Apptainer Containers](https://a3s.fi/biocontainers2024/Basic_usage_of_Apptainer.html)
+### Slides:  [Building Apptainer/Singularity container images](https://a3s.fi/biocontainers2024/Buiding_container_images.html)
 
 ###  Tutorials and exercises
 {% for hands-on in items %}
