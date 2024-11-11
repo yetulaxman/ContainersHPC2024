@@ -12,7 +12,7 @@ If you are new to CSC supercomputers, please check more on how to [login to Puht
 
 # Tykky container wrapper
 
-CSC provides the [Tykky container wrapper tool](https://docs.csc.fi/computing/containers/tykky/) to build container-based installations on CSC supercomputers. On LUMI there is similar (LUMI container wrapper)[https://docs.lumi-supercomputer.eu/software/installing/container-wrapper/]. It works by starting with a ready-made container and then does all the installations in a SquashFS filesystem image that gets bound at runtime. 
+CSC provides the [Tykky container wrapper tool](https://docs.csc.fi/computing/containers/tykky/) to build container-based installations on CSC supercomputers. On LUMI there is similar [LUMI container wrapper](https://docs.lumi-supercomputer.eu/software/installing/container-wrapper/). It works by starting with a ready-made container and then does all the installations in a SquashFS filesystem image that gets bound at runtime. 
 
 Tykky also creates wrapper scripts for all the executables in specifed folders, so in most cases usage is identical to natively installed applications.
 
