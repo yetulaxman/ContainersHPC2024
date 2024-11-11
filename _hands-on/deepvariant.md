@@ -14,7 +14,7 @@ Upon completion of this tutorial you will learn to:
 
 ### Run WGS analysis with DeepVariant Apptainer container on Puhti
 
-1. First login to Puhti supercomputer using *SSH*:
+1. First login to Puhti supercomputer using *SSH* (or by opening a login node shell in the [Puhti web interface](https://www.puhti.csc.fi/public/):
    ```bash
    ssh yourcscusername@puhti.csc.fi
    ```
@@ -39,7 +39,7 @@ Upon completion of this tutorial you will learn to:
     unset XDG_RUNTIME_DIR
     apptainer build deepvariant_cpu_1.2.0.sif docker://google/deepvariant:1.2.0
    ```
-   This image conversion process for DeepVariant takes sometime as it is a bigger image with several layers.
+   *Please note** that this image building process for DeepVariant can take sometime as image is relatively big with several image layers.
 6. Download and unpack the test data for DeepVariant analysis
    ```bash
     wget https://a3s.fi/containers-workflows/deepvariant_testdata.tar.gz
@@ -74,5 +74,14 @@ Upon completion of this tutorial you will learn to:
    ```bash
    sbatch -J deepvariant deepvariant_puhti.sh
    ```
-   If the analysis is completed successfully (**hint**: check the status of submitted job using `squeue -u $USER` command or using `seff <jobid>`), you are able to see the vcf files as output in the current directory.
+
+9. Monitor the status of submitted Slurm job
+    
+```bash
+ squeue -j <slurmjobid>
+# or
+squeue --me
+# or
+squeue -u $USER
+ ```
 
