@@ -56,7 +56,7 @@ tar -xavf course_notebook.tar.gz
     Number of CPU cores: 2  
     Memory (Gb): 2  
     Local disk: 0  
-    Time: 0:30:00  
+    Time: 0:45:00  
     Python: custom path  
     Custom Python interpreter: /projappl/project_200xxxx/$USER/Notebook/bin  
     Working directory: /projappl/project_200xxxx/  
