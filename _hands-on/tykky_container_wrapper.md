@@ -3,6 +3,13 @@ topic: introduction
 title: Tutorial1 - Tykky container wrapper
 ---
 
+> This tutorial is done on **Puhti**, which requires that:
+
+- You have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/).
+- Your account belongs to a project [that has access to the Puhti service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
+
+If you are new to CSC supercomputers, please check more on how to [login to Puhti Supercomputer](https://yetulaxman.github.io/ContainersHPC2023/hands-on/ssh-puhti.html)
+
 # Tykky container wrapper
 
 CSC provides the [Tykky container wrapper tool](https://docs.csc.fi/computing/containers/tykky/) to build container-based installations on CSC supercomputers. On LUMI there is similar (LUMI container wrapper)[https://docs.lumi-supercomputer.eu/software/installing/container-wrapper/]. It works by starting with a ready-made container and then does all the installations in a SquashFS filesystem image that gets bound at runtime. 
