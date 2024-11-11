@@ -5,7 +5,7 @@ author: CSC Training
 
 {% assign items = site.hands-on |  sort: "title" %}
 
-## 1. Introduction to Containers
+## 1. Introduction to HPC Containers
 ### Slides: [Brief Introduction to CSC HPC Environments](https://a3s.fi/biocontainers2024/CSC_HPC_Systems.html)
 ### Slides: [Introduction to Containers](https://a3s.fi/biocontainers2024/Introduction_to_containers.html)
 ### Slides: [Tykky Container Wrapper](https://a3s.fi/biocontainers2024/Container_wrapper.html)
@@ -17,7 +17,7 @@ author: CSC Training
 {% endif %}
 {% endfor %}
 
-## 2. Introduction to Apptainer/Singularity containers
+## 2. Building and Using HPC Containers
 ### Slides:  [Basic Usage of Apptainer Containers](https://a3s.fi/biocontainers2024/Basic_usage_of_Apptainer.html)
 ### Slides:  [Building Apptainer/Singularity container images](https://a3s.fi/biocontainers2024/Buiding_container_images.html)
 
@@ -27,7 +27,6 @@ author: CSC Training
 1. [{{ hands-on.title }}]({{ hands-on.url | relative_url }})
 {% endif %}
 {% endfor %}
-
 
 
 ## 3. Working with Docker Containers 
