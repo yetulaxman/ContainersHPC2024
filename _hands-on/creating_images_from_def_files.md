@@ -8,9 +8,9 @@ title: Tutorial2 - Creating Apptainer containers from definition files
 In this tutorial we create a Apptainer container from a definition file.
 
 There are many ways to build Apptainer containers. While writing and using definition files 
-many not be the most intuitive one, it has many benefits: Definition files are easily 
+may not be the most intuitive one, it has many benefits: Definition files are easily 
 upgradeabla and reusable. They are the prefereable way to to distribute containers (as opposed
-to "black box" image files) and are necessary when uploadin your images to most repositories.
+to "black box" image files) and are necessary when uploading your images to most repositories.
 
 On some systems Apptainer provides ways to build container images locally without root privileges 
 with the [fakeroot function](https://apptainer.org/docs/user/latest/fakeroot.html). There will 
@@ -21,14 +21,14 @@ Even if fakeroot is available, in most cases it is preferable to build container
 where you have root access. This could be your own machine or a suitable virtual machine. This 
 kind of setup gives you the most options, and makes troubleshooting the easiest.
 
-We will be building a container for [MACS3](https://github.com/macs3-project/MACS) software.
+We will be building a container for [COBRA](https://github.com/linxingchen/cobra) software.
 
 ## 1. Creating a definition file
 
 Create an empty definition file. You can use a text editor of your choice, e.g. `nano`:
 
 ```bash
-nano macs3.def
+nano cobra.def
 ```
 
 💬 In nano you can use `ctrl + o` to save and `ctrl + x` to exit.
@@ -76,7 +76,7 @@ and download the from inside the container using  `git`, `wget`, `curl` or simil
 
 💬These tools are often not included in the base image, so you will need to install them first.
 
-MACS3 does not need any extra files, so in this case we can just omit the whole section.
+COBRA does not need any extra files, so in this case we can just omit the whole section.
 
 
 ### 1.3 Installing software
@@ -102,6 +102,7 @@ Add the following lines to the definition file:
 %post
   # Install python
   apt update
+  apt install wget -y
   apt install python3 -y
   apt install pip -y  
 ```
@@ -113,35 +114,39 @@ We will experiment with different installation methods to test some of the optio
 
 #### 1.3.1 Installing from PyPI
 
-MACS3 is available in PyPI, so the easiest way to install it is by using `pip`.
+COBRA is available in PyPI, so the easiest way to install it is by using `pip`.
 
 Add the following lines to the definition file:
 
 ```text
-  # Install MACS3
-  pip install MACS3
+  # Install COBRA
+  pip install cobra-meta
 ```
 
 You can now try to build it:
 
 ```bash
-apptainer build --fakeroot macs3.sif macs3.def
+apptainer build --fakeroot cobra.sif cobra.def
 ```
 
-💬 If no root access or namespaces are detected `fakeroot`is assumed by default, and
+💬 If no root access or namespaces are detected `fakeroot`is assumed by default and
 option `--fakeroot` can be omitted. We include it here for the sake of calrity.
 
 If the build finishes, try it:
 
 ```bash
-apptainer exec macs3.sif macs3 --help
+apptainer exec cobra.sif cobra-meta -h
 ```
 
-#### 1.3.2 Installing from source code
+#### 1.3.2 Extra task: Installing from source code
 
-Since MACS3 is still under development, we might prefer to install from source code instead to 
-include any changes not yet available in PyPI. If we clone the latest version from git, we can 
-update the software simply by re-running the `apptainer build` command.
+As an optional extra task you can also try to install the software
+from git.
+
+Since COBRA is still under development, we might prefer to install from 
+source code instead to include any changes not yet available in PyPI. 
+If we clone the latest version from git, we can update the software 
+simply by re-running the `apptainer build` command.
 
 For this we also need to install git and python3-devel packages.
 
@@ -149,44 +154,40 @@ Comment out or delete the pip command, and add the following to the definition f
 
 ```text
   apt install python3-dev -y
-  apt-mark hold openssh-client && apt install --assume-yes git -y
-  git clone https://github.com/macs3-project/MACS.git --recurse-submodules
-  cd MACS
-  pip install -r requirements.txt
+  apt-mark hold openssh-client && apt install git -y
+  git clone https://github.com/linxingchen/cobra.git
+  cd cobra
   python3 setup.py install
 ```
+
+💬 Sometimes building with `fakeroot` requires workarounds. Installing git
+will by default install openssh-client. This will fail when trying  to install 
+without `sudo`. 
 
 You can now try to build it:
 
 ```bash
-apptainer build --fakeroot macs3.sif macs3.def
+apptainer build --fakeroot cobra.sif cobra.def
 ```
 
 If the build finishes, try it:
 
 ```bash
-apptainer exec macs3.sif macs3 --help
+apptainer exec cobra.sif cobra-meta -h
 ```
 
-In this case there will be an error message about MACS3 package not being found. 
+In this case there will be an error message about pandas module not being found. 
 
 This is a good reminder that even if build finishes there could be problems with 
 the container, so you should always test.
 
-You can first try setting `$PYTHONPATH` inside the container and try again:
+Try adding
 
 ```bash
-export APPTAINERENV_PYTHONPATH=/usr/lib/python3.8/site-packages
-apptainer exec macs3.sif macs3 --help
+pip install pandas
 ```
 
-To make the fix permanent you can add `%environment` section to the definition file:
-
-```text
-%environment
-  export PYTHONPATH=/usr/lib/python3.8/site-packages
-```
-
+Rebuild and re-test.
 
 #### 1.3.3 Setting up the environment
 
@@ -204,66 +205,73 @@ The default installation location for software is usually one of the folders in 
 Sometimes however, especially when using Conda or some software specific installations scripts, the 
 installation may end up in some other location.
 
-To test this, let's edit the install command above a bit to install to folder /app/macs instead:
+To test this, let's edit the definition file to add blastn to the image.
 
 ```text
-  python3 setup.py install --prefix=/app/macs
+  cd /
+  wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.16.0+-x64-linux.tar.gz
+  tar xf ncbi-blast-2.16.0+-x64-linux.tar.gz
+  rm ncbi-blast-2.16.0+-x64-linux.tar.gz
 ```
 
-We will now need to adjust `$PATH` and `$PYTHONPATH`:
+We will now need either to copy the binaries to somewhere in `$PATH` or to adjust `$PATH`
 
 ```text
 %environment
-  export PATH=/app/macs/bin:$PATH
-  export PYTHONPATH=/app/macs/lib/python3.8/site-packages
+  export PATH=/ncbi-blast-2.16.0+/bin:$PATH
 ```
 
-💬These can also be set at runtime in the host system, but it's more user friendly to set them in container.
+💬`PATH` can also be set at runtime in the host system, by e.g. setting `$APPTAINERENV_PREPEND_PATH`
+but it's more user friendly to set it in container.
 
-For future compatibility it is best to make any changes to environment in the %environment section
-or using variable `$APPTAINER_ENVIRONMENT` in %post, instead of relying on any fixed file path (/environment or a file in /.singularity.d/env).
-
-You can try this definition file as above:
-
-```bash
-apptainer build --fakeroot macs3.sif macs3.def
-```
-
-If the build finishes, try it:
-
-```bash
-apptainer exec macs3.sif macs3 --help
-```
+For future compatibility it is best to make any changes to environment in the 
+%environment section or using variable `$APPTAINER_ENVIRONMENT` in %post, instead 
+of relying on any fixed file path (/environment or a file in /.singularity.d/env).
 
 ## 2. Adding additional metadata
 
-If you are building the container image just for yourself, you may be happy with an image with
-just the basic functionality.
+If you are building the container image just for yourself, you may 
+be happy with an image with just the basic functionality.
 
-If you plan of sharing the image with others, it is helpfull to add some additional metada to the
-definition file.
+If you plan of sharing the image with others, it is helpfull to add 
+some additional metada to the definition file.
 
 ### 2.1 Adding a runscript
 
-Runscript is a list of commands that will be executed when the container is run with `apptainer run` or when the container is run as an executable. It is defined in section `%runscript`.
+Runscript is a list of commands that will be executed when the container 
+is run with `apptainer run` or when the container is run as an executable. 
+It is defined in section `%runscript`.
 
-In the finished container image these commands are stored in script `/apptainer`.
+If the container has a main application that is typically run, e.g. some 
+frontend script, it's usually a good idea to make runscript run that so 
+the end user can simply to run the container as an executable.
 
-If the container has a main application taht is typically run, e.g. some frontend script, it's usually a good idea to make runscript run that so the end user can simply to run the container as an executable.
+One option is to make the container run any command line options as a 
+command. This will make `apptainer run` behave similarily to `apptainer 
+exec`. You can also choose to leave it empty or e.g. make it print out 
+usage help.
 
-One option is to make the container run any command line options as a command. This will make `apptainer run` behave similarily to `apptainer exec`. You can also choose to leave it empty or e.g. make it print out usge help.
+In this case we could make it run cobra-meta:
 
 ```text
 %runscript
-  exec "$@"
+  exec cobra-meta "$@"
 ```
+
+You could now run the container as an executable:
+
+```bash
+chmod u+x cobra.sif
+./cobra.sif -h
+```
+
 
 💬In a HPC system, especially with batch jobs, it's best to always use `aptainer exec` to run.
 
-The runscript of an existeing container can be checked with:
+The runscript of an existing container can be checked with:
 
 ```bash
-apptainer inspect --runscript macs3.sif
+apptainer inspect --runscript cobra.sif
 ```
 
 ### 2.2 Adding information about the container
@@ -279,7 +287,7 @@ Apptainer automatically adds some metadata to the container. This includes Appta
 This information can be checked with command:
 
 ```bash
-apptainer inspect --labels macs3.sif
+apptainer inspect --labels cobra.sif
 ```
 
 ### 2.3 Adding help text
@@ -288,42 +296,86 @@ It is also possible to add usage information. This goes to section `%help` and c
 command:
 
 ```bash
-apptainer run-help macs3.sif
+apptainer run-help cobra.sif
 ```
 
 ```text
 %help
-  This is a container for MACS3 software
-  https://github.com/macs3-project/MACS
-  MACS3 is distributed under BSD 3-Clause License
+  This is a container for COBRA software
+  https://github.com/linxingchen/cobra
+  COBRA is distributed under MIT License
   Usage:
-  apptainer exec macs3.sif macs3 --help
+  apptainer exec cobra.sif cobra-meta -h
 ```
 
 Try adding some additional metadata to the definition file and rebuild.
 
+### 3 Putting it all together
+
+You can try this definition file:
+
+```text
+Bootstrap: docker
+From: ubuntu:22.04
+
+%post
+  # Install system requirements
+  apt update
+  apt install wget -y
+  apt install python3 -y
+  apt install pip -y
+    
+  # Install COBRA
+  pip install cobra-meta
+
+  # Install BLAST
+  cd  /
+  wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.16.0+-x64-linux.tar.gz
+  tar xf ncbi-blast-2.16.0+-x64-linux.tar.gz
+  rm ncbi-blast-2.16.0+-x64-linux.tar.gz
+
+%environment
+  export PATH=/ncbi-blast-2.16.0+/bin$PATH 
+
+%runscript
+  exec cobra-meta "$@"
+
+%help
+  This is a container for COBRA software
+  https://github.com/linxingchen/cobra
+  COBRA is distributed under MIT License
+  Usage:
+  apptainer exec cobra.sif cobra-meta -h
+
+%labels
+  Maintainer my.address@example.net
+  Version v1.0
+
+```
+
 ```bash
-apptainer build --fakeroot macs3.sif macs3.def
+apptainer build --fakeroot cobra.sif cobra.def
+```
+
+If the build finishes, try it:
+
+```bash
+apptainer exec cobra.sif cobra-meta -h
+apptainer exec cobra.sif blastn -h
+```
+
+Try the run script:
+
+```bash
+chmod u+x cobra.sif
+./cobra.sif -h
 ```
 
 You can check the information you added:
 
 ```bash
-apptainer inspect --runscript macs3.sif
-apptainer inspect --labes macs3.sif
-apptainer run-help macs3.sif
+apptainer inspect --runscript cobra.sif
+apptainer inspect --labels cobra.sif
+apptainer run-help cobra.sif
 ```
 
-We have provided some [example definition files](https://github.com/amsaren/course_materials/tree/main/Singularity_def_file_examples), including the various versions of this tutorial. 
-
-You can try copying the the image file to Puhti and running it there
-
-```bash
-scp macs3.sif <username>@puhti.csc.fi:macs3.sif
-```
-
-In Puhti:
-
-```bash
-apptainer exec macs3.sif macs3 --help
-```
