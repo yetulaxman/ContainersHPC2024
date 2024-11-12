@@ -1,9 +1,14 @@
 ---
 topic: docker
-title: Tutorial3 - BLAST example
+title: Tutorial3 - Analysis with containerised BLAST software
 ---
 
-There are many bioinformatics applications available as docker images in  different registries such as [DockerHub](https://hub.docker.com), [Quay Container Registry](https://quay.io) and [Biocontainers](https://biocontainers.pro). Our aim here is to acquire some basic skills to use any containerised application from the registries for our bioinformatics analysis in HPC environment.  These skills greatly empower bioinformaticians with several thousands of containerised applications which can be easily deployed in a reproducible manner. This tutorial provides hands-on experience with one of the popular bioinformatics tools called, BLAST which compares nucleotide or protein sequences to corresponidng sequences in a database and calculates the statistical significance of the matches.
+There are many bioinformatics applications available as docker images in  different registries such as [DockerHub](https://hub.docker.com), [Quay Container Registry](https://quay.io) and [Biocontainers](https://biocontainers.pro). Our aim here is to acquire some basic skills to use any containerised application from the registries for our bioinformatics analysis in HPC environment.  These skills greatly empower bioinformaticians with several thousands of containerised applications which can be easily deployed in a reproducible manner. This tutorial provides hands-on experience with one of the popular bioinformatics tools called, [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi) which compares nucleotide or protein sequences to corresponidng sequences in a database and calculates the statistical significance of the matches.
+
+> This tutorial is done on interactive node of **Puhti**, which requires that:
+- You have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/).
+- Your account belongs to a project [that has access to the Puhti service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
+
 
 ### Expected learning outcome from tutorial:
 After this tutorial, you will be able to: 
@@ -11,14 +16,14 @@ After this tutorial, you will be able to:
 - Deploy the application as a singularity/apptainer container in Puhti environment interactively
 
 
-### Run BLAST analysis using an apptainer container
+### Run BLAST analysis using an Apptainer container
 
 1. Navigate to your *scratch* folder and launch an interactive terminal on Puhti supercomputer:
 
    ```bash 
    cd /scratch/project_xxxx/$USER    # choose your course (or your own) project 
-   mkdir -p BLAST && cd BLAST   #  create a separate folder for this analysis
-   sinteractive -c 2 -m 4G -d 100   # choose project number upon terminal prompt
+   mkdir -p BLAST && cd BLAST        #  create a separate folder for this analysis
+   sinteractive -c 2 -m 4G -d 100    # choose project number upon terminal prompt
    ``` 
 2. You'll use a BLAST (Basic Local Alignment Search Tool) container image as available from [Quay Registry](https://quay.io). Visit the webpage of Quay registry 
    and search for the BLAST image (using keyword: BLAST) on the top right hand corner. You can find the BLAST images from different repositories/accounts. Pick the 

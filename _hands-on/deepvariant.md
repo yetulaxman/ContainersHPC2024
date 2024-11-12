@@ -39,7 +39,7 @@ Upon completion of this tutorial you will learn to:
     unset XDG_RUNTIME_DIR
     apptainer build deepvariant_cpu_1.2.0.sif docker://google/deepvariant:1.2.0
    ```
-   *Please note** that this image building process for DeepVariant can take sometime as image is relatively big with several image layers.
+   **Please note** that this image building process for DeepVariant can take sometime as image is relatively big with several image layers.
 6. Download and unpack the test data for DeepVariant analysis
    ```bash
     wget https://a3s.fi/containers-workflows/deepvariant_testdata.tar.gz
