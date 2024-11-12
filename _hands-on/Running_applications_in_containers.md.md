@@ -13,6 +13,7 @@ In normal testing it is best to use [interactive sessions](https://docs.csc.fi/c
 
 Log into Puhti.
 
+
 Download a test container image from Allas:
 
 ```bash
@@ -38,8 +39,8 @@ apptainer exec tutorial.sif hello_world
 Compare the outputs of the following commands:
 
 ```bash
-cat /etc/*release
-apptainer exec tutorial.sif cat /etc/*release
+grep "^NAME" /etc/os-release
+apptainer exec tutorial.sif grep "^NAME" /etc/os-release
 ```
 
 - The first command is run on the host, the second command is run inside the container.
@@ -73,6 +74,8 @@ Copy the following contents into the file and replace `<project>` with your actu
 
 apptainer exec tutorial.sif hello_world
 ```
+
+💬 in `nano` text editor you can use `ctrl+o` to save and `ctrl+x` to exit.
 
 Submit the job to the queue with:
 
@@ -151,11 +154,15 @@ syntax is `--bind /path/inside/host:/path/inside/container`.
 - The option is available for all run methods described in the previous
   tutorial.  
 
-1. To run these exercises on Puhti, use `sinteractive` or open a compute node
-   shell in the [Puhti web interface](https://www.puhti.csc.fi):
+1. Apptainer will by default bind the current directory but other directories 
+will need to be bound specifically.
+
+Try moving to your project's `/scratch` directory and list the contents of the 
+current directory:
 
    ```bash
-   sinteractive --account <project>  # replace <project> with your CSC project, e.g. project_2001234
+   cd  /scratch/<project> # replace <project> with your CSC project, e.g. project_2001234
+   apptainer exec tutorial.sif ls
    ```
 
 2. Try listing the contents of your project's `/projappl` directory (edit the path as needed)
