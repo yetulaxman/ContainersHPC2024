@@ -40,17 +40,20 @@ After this tutorial, you will learn to:
    ```  
    scp trimmomatic_image.tar yourcscusername@puhti.csc.fi:/scratch/project_xxx/yourcscusername
    ```
-
+  ‼️ This step requires CSC password. if you don't want to share your password here, you can skip this step and download the tar file directly from Puhti instead
+  
 5. Build Apptainer image from the tarball. 
  
     ```bash
-    cd /scratch/project_2xxxx/yourcscusername  # replace `project_2xxxx` with a valid project number 
+    cd /scratch/project_2xxxx/yourcscusername  # replace `project_2xxxx` with a valid project number
+    # uncomment the following command if you have not copied the tar file from PWD
+    # wget https://a3s.fi/biocontainers2024/trimmomatic_image.tar
     apptainer build local_trimmomatic_image.sif docker-archive://trimmomatic_image.tar
     ```
   
 6. Launch Apptainer container and check if you can get a command-line help for trimmomatic software
 
     ```bash
-   appatiner exec local_trimmomatic_image.sif trimmomatic --help
+   apptainer exec local_trimmomatic_image.sif trimmomatic --help
    ```
  
