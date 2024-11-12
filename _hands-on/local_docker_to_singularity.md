@@ -1,6 +1,6 @@
 ---
 topic: docker
-title: Tutorial2 -  Converting of local Docker images to Apptainer 
+title: Tutorial2 -  Converting a local Docker image to Apptainer 
 ---
 Sometimes, container images may not be readily available in registries for our purpose. In that case, we have to either modify an existing docker image or build a new one. Unfortunately, the docker-related operations can only be done on our local machines or any host machine where we have privileged root access. This tutorial explains how to build a Apptainer image from a local docker image in play-with-docker environment. 
 
