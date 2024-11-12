@@ -51,7 +51,7 @@ export APPTAINER_CACHEDIR=$TMPDIR
 Now lets create the base container:
 
 ```bash
-apptainer build --fix-perm --sandbox mcl docker://rockylinux:8.6
+apptainer build --fix-perms --sandbox mcl docker://rockylinux:8.6
 ```
 
 Note that instead of an image file, we created a directory called `mcl`. If
@@ -61,7 +61,9 @@ you need to include some reference files etc, you can copy them to correct subfo
 ## 2. Open a shell in the container
 
 We can then open a shell in the container. We need the container file system 
-to be writable, so we include option `--writable`:
+to be writable, so we include option `--writable`. We need `--fakeroot` for `yum`
+to work. We also need either use `--cleanenv` or run `unset $TMPDIR` inside the 
+container:
 
 ```bash
 sudo apptainer shell --cleanenv --fakeroot --writable hmmer
@@ -85,7 +87,7 @@ Notice that unlike in the CSC machine, we are able to use the package mangement
 tools (in this case `yum`). This will often make installing libraries and other 
 dendencies easier.
 
-Also notice that it is not necessary to use `sudo` inside the container.
+Also notice that you should not use `sudo` to run the commands.
 
 ```bash
 yum group install "Development Tools" -y
