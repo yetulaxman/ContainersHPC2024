@@ -4,6 +4,8 @@ title: Tutorial2 -  Converting a local Docker image to Apptainer
 ---
 Sometimes, container images may not be readily available in registries for our purpose. In that case, we have to either modify an existing docker image or build a new one. Unfortunately, the docker-related operations can only be done on our local machines or any host machine where we have privileged root access. This tutorial explains how to build a Apptainer image from a local docker image in play-with-docker environment. 
 
+> Part of this tutorial requires a workstation with docker client installed and thus can't be done in CSC HPC environment.  <a href="http://labs.play-with-docker.com/" target="_blank"> Use PWD terminal</a> instead.
+
 ###  Expected outcome of this tutorial:
 After this tutorial, you will learn to:
 - Save a docker image locally ( In PWD environment)
@@ -11,7 +13,7 @@ After this tutorial, you will learn to:
 
 ### Converting a local docker image to Apptainer 
 
-1. Let's use the [trimmomatic software] as an example software as available in [Red hat Quay Registry](https://quay.io/). <a href="http://labs.play-with-docker.com/" target="_blank"> In PWD terminal</a>, run the following command to pull an image:
+1. Let's use the [trimmomatic software] as an example software as available in [Red hat Quay Registry](https://quay.io/). In PWD terminal, run the following command to pull an image:
 
    ```bash
     docker pull quay.io/biocontainers/trimmomatic:0.32--hdfd78af_4
