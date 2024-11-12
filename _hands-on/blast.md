@@ -16,14 +16,14 @@ After this tutorial, you will be able to:
 - Deploy the application as a singularity/apptainer container in Puhti environment interactively
 
 
-### Run BLAST analysis using an apptainer container
+### Run BLAST analysis using an Apptainer container
 
 1. Navigate to your *scratch* folder and launch an interactive terminal on Puhti supercomputer:
 
    ```bash 
    cd /scratch/project_xxxx/$USER    # choose your course (or your own) project 
-   mkdir -p BLAST && cd BLAST   #  create a separate folder for this analysis
-   sinteractive -c 2 -m 4G -d 100   # choose project number upon terminal prompt
+   mkdir -p BLAST && cd BLAST        #  create a separate folder for this analysis
+   sinteractive -c 2 -m 4G -d 100    # choose project number upon terminal prompt
    ``` 
 2. You'll use a BLAST (Basic Local Alignment Search Tool) container image as available from [Quay Registry](https://quay.io). Visit the webpage of Quay registry 
    and search for the BLAST image (using keyword: BLAST) on the top right hand corner. You can find the BLAST images from different repositories/accounts. Pick the 
