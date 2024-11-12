@@ -3,7 +3,12 @@ topic: docker
 title: Tutorial3 - BLAST example
 ---
 
-There are many bioinformatics applications available as docker images in  different registries such as [DockerHub](https://hub.docker.com), [Quay Container Registry](https://quay.io) and [Biocontainers](https://biocontainers.pro). Our aim here is to acquire some basic skills to use any containerised application from the registries for our bioinformatics analysis in HPC environment.  These skills greatly empower bioinformaticians with several thousands of containerised applications which can be easily deployed in a reproducible manner. This tutorial provides hands-on experience with one of the popular bioinformatics tools called, BLAST which compares nucleotide or protein sequences to corresponidng sequences in a database and calculates the statistical significance of the matches.
+There are many bioinformatics applications available as docker images in  different registries such as [DockerHub](https://hub.docker.com), [Quay Container Registry](https://quay.io) and [Biocontainers](https://biocontainers.pro). Our aim here is to acquire some basic skills to use any containerised application from the registries for our bioinformatics analysis in HPC environment.  These skills greatly empower bioinformaticians with several thousands of containerised applications which can be easily deployed in a reproducible manner. This tutorial provides hands-on experience with one of the popular bioinformatics tools called, [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi) which compares nucleotide or protein sequences to corresponidng sequences in a database and calculates the statistical significance of the matches.
+
+> This tutorial is done on interactive node of **Puhti**, which requires that:
+- You have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/).
+- Your account belongs to a project [that has access to the Puhti service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
+
 
 ### Expected learning outcome from tutorial:
 After this tutorial, you will be able to: 
