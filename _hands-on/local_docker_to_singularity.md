@@ -2,7 +2,7 @@
 topic: docker
 title: Tutorial2 -  Converting a local Docker image to Apptainer 
 ---
-Sometimes, container images may not be readily available in registries for our purpose. In that case, we have to either modify an existing docker image or build a new one. Unfortunately, the docker-related operations can only be done on our local machines or any host machine where we have privileged root access. This tutorial explains how to save docker image localy and eventually use it with Apptainer in HPC environment.
+Sometimes, container images may not be readily available in registries for our purpose. In that case, we have to either modify an existing docker image or build a new one. Unfortunately, the docker-related operations can only be done on our local machines or any host machine where we have privileged root access. This tutorial explains how to save docker image locally and eventually use it with Apptainer in HPC environment.
 
 > Part of this tutorial requires a workstation with docker client installed and thus can't be done in CSC HPC environment.  <a href="http://labs.play-with-docker.com/" target="_blank"> Use PWD terminal</a> instead.
 
