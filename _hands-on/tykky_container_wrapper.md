@@ -54,7 +54,7 @@ module load tykky
 Create and containerize the Conda environment using the `conda-containerize` command:
 
 ```bash
-conda-containerize new --prefix --mamba /projappl/<project>/$USER/nglview env.yml    # replace <project> with your CSC project, e.g. project_2001234
+conda-containerize new --mamba --prefix /projappl/<project>/$USER/nglview env.yml    # replace <project> with your CSC project, e.g. project_2001234
 ```
 
 ☝🏻 This process can take several minutes so be patient.
