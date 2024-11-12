@@ -33,7 +33,7 @@ After this tutorial, you will learn to:
    ls -l  trimmomatic_image.tar  # to see the local copy of image tarball
    ```
 
-4. Copy the image tarball from PWD to your **scratch* folder on Puhti 
+4. Copy the image tarball from PWD to your **scratch** folder on Puhti 
 
    ```  
    scp trimmomatic_image.tar yourcscusername@puhti.csc.fi:/scratch/project_xxx/yourcscusername
