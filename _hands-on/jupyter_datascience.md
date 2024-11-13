@@ -51,7 +51,7 @@ tar -xavf course_notebook.tar.gz
 2. Login with CSC/HAKA/VIRTU credentials 
 3. Once login is successful, select "Jupyter" icon from the pinned apps on the landing page.  Then open the Jupyter notebook and use the following settings:
     Reservation: use course reservation if available.  
-    Project: project_20xxxx   
+    Project: project_2003682  
     Partition: small  
     Number of CPU cores: 2  
     Memory (Gb): 2  
