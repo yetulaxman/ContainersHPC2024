@@ -57,7 +57,7 @@ Add the following lines to the definition file:
 
 ```text
 Bootstrap: docker
-From: ubuntu:20.04
+From: ubuntu:22.04
 ```
 
 ### 1.2 Including files
@@ -121,6 +121,14 @@ Add the following lines to the definition file:
 ```text
   # Install COBRA
   pip install cobra-meta
+```
+
+By default Apptainer saves temporary files to you home directory. As the home directory is quite small and easily fills up you may want to
+use some other location. You can do this by setting some environment variables:
+
+```bash
+export APPTAINER_TMPDIR=$TMPDIR
+export APPTAINER_CACHEDIR=$TMPDIR
 ```
 
 You can now try to build it:
