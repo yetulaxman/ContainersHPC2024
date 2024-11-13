@@ -38,7 +38,7 @@ vi nextflow.config
 ```
 ### Run Nextflow pipeline
 
-Let's use a batch script to submit the Nextflow job to the cluster. If you are directly pulling container images on the fly, please set $APPTAINER_TMPDIR and $APPTAINER_CACHEDIR to either local scratch (i.e. $LOCAL_SCRATCH) or to your scratch folder (/scratch/<project>) in the batch script. Otherwise $HOME directory, the size of which is only 10 GB, will be used.  To avoid any disk quota errors while pulling images, set $APPTAINER_TMPDIR and $APPTAINER_CACHEDIR as in batch script as shown below:
+Let's use a batch script to submit the Nextflow job to the cluster. If you are directly pulling container images on the fly, please set $APPTAINER_TMPDIR and $APPTAINER_CACHEDIR to either local scratch (i.e. $LOCAL_SCRATCH) or to your scratch folder (`/scratch/<project>/$USER`) in the batch script. Otherwise $HOME directory, the size of which is only 10 GB, will be used. To avoid any disk quota errors while pulling images, set $APPTAINER_TMPDIR and $APPTAINER_CACHEDIR as in batch script as shown below:
 
 ```bash
 #!/bin/bash
@@ -59,6 +59,7 @@ unset XDG_RUNTIME_DIR
 # Activate  Nextflow on Puhti
 module load  nextflow/23.04.3
 
+# run nextflow pipeline
 nextflow run fastqc.nf
 #nextflow run fastqc.nf --reads data2/*_{1,2}_subset.fq.gz
 ```
@@ -69,15 +70,15 @@ Replace <project> with the correct project number and copy the resulting script 
 ```bash
 sbatch nextflow_fastqc.sh 
 ```
-Once Nextflow job gets resources on HPC cluster, the job would get executed. The script will pull the necessary container images on the fly and run the FastQC analysis inside the container.
-Monitor slurm output file (slurm-\<jobid\>.out file) in the same directory. Once the analysis is finished, you can see that *FastqQC* analysis was performed as shown below:  
+Once Nextflow job gets resources on HPC cluster, the job will get executed. The script will pull the necessary container image on the fly and run the FastQC analysis inside the container.
+Monitor contents of slurm output file (`slurm-<jobid>.out` ) in the same directory. Once the analysis is finished, you can see that *FastqQC* analysis was performed as shown below:  
 
 ```bash
 ls -l $PWD/work/*/*
 ```
 
 ### Passing parameters to Nextflow pipeline
-Nextflow parameters inside a script are declared by prepending to a variable name with the prefix *params*, separated by dot character (e.g., params.reads). Parameters thus specified in script are used by default. The parameter can also be specified on the command line by prefixing the parameter name with a double dash character (e.g., --reads). 
+Nextflow parameters in script are declared by prepending to a variable name with the prefix *params*, separated by dot character (e.g., params.reads). Parameters thus specified in script are used by default. The parameter can also be specified on the command line by prefixing the parameter name with a double dash character (e.g., --reads). 
  
 Here is an example of declaring parameters (here, input files) to *FastQC* software inside Nextflow script (NOT for running the command on the terminal):
 
@@ -90,7 +91,7 @@ One can also override parameter values (here files inside `$baseDir/data/` direc
 ```bash
 nextflow run fastqc.nf --reads data2/*_{1,2}_subset.fq.gz
 ```
-Please note that *data2* folder has different samples (i.e., lymphnode4a samples) than the ones (i.e.,lung3e samples) in *data* folder which could have been used by default. You can now update above nextflow command in the batch script and submit job again.
+Please note that *data2* folder has different samples (i.e., lymphnode4a samples) than the ones (i.e.,lung3e samples) in *data* folder which could have been used by default. You can now update above nextflow script (i.e., comment previous nextflow run command and uncomment the next Nextflow command) in the batch script and submit job again.
 
 You can see that *FastQC* analysis was performed on a new set of samples now as shown below:  
 
