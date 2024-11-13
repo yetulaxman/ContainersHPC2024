@@ -13,7 +13,7 @@ title: Tutorial3 - Containerised FastQC in Nextflow
 You will use a [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) analysis tool that involves working with samples from sequencing experiments. Here, you will learn how to:
 - use containers in a Nextflow pipeline
 - run Nextflow pipeline as a batch job
-- few basic hacks on the pipeline
+- learn a ew basic hacks in  pipeline
   
 ### Understand the container setup for FASTQC software
 Nextflow pipelines usually contain many analysis steps and often need multiple containers to run a pipeline. However, for this tutorial we start with one analysis (FastQc analysis) to explain the concept of containerised workflow. The material for this tutorial can be downloaded from Allas object storage as below:
@@ -63,14 +63,13 @@ module load  nextflow/23.04.3
 nextflow run fastqc.nf
 #nextflow run fastqc.nf --reads data2/*_{1,2}_subset.fq.gz
 ```
-Please note that if you use $LOCAL_SCRATCH in the batch script, make sure to request NVMe disk space in sbatch directives by adding `#SBATCH --gres=nvme:<value in GB>`
 
 Replace <project> with the correct project number and copy the resulting script to a file ( e.g., nextflow_fastqc.sh). And then submit it to HPC cluster as below:
 
 ```bash
 sbatch nextflow_fastqc.sh 
 ```
-Once Nextflow job gets resources on HPC cluster, the job will get executed. The script will pull the necessary container image on the fly and run the FastQC analysis inside the container.
+Once the Nextflow job gets resources on HPC cluster, the job will get executed. The script will pull the necessary container image on the fly and run the FastQC analysis inside the container.
 Monitor contents of slurm output file (`slurm-<jobid>.out` ) in the same directory. Once the analysis is finished, you can see that *FastqQC* analysis was performed as shown below:  
 
 ```bash
@@ -78,7 +77,7 @@ ls -l $PWD/work/*/*
 ```
 
 ### Passing parameters to Nextflow pipeline
-Nextflow parameters in script are declared by prepending to a variable name with the prefix *params*, separated by dot character (e.g., params.reads). Parameters thus specified in script are used by default. The parameter can also be specified on the command line by prefixing the parameter name with a double dash character (e.g., --reads). 
+Nextflow parameters in the script are declared by prepending to a variable name with the prefix *params*, separated by dot character (e.g., params.reads). Parameters thus specified in script are used by default. The parameter can also be specified on the command line by prefixing the parameter name with a double dash character (e.g., --reads). 
  
 Here is an example of declaring parameters (here, input files) to *FastQC* software inside Nextflow script (NOT for running the command on the terminal):
 
