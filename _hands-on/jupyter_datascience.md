@@ -58,7 +58,7 @@ tar -xavf course_notebook.tar.gz
     Local disk: 0  
     Time: 0:45:00  
     Python: custom path  
-    Custom Python interpreter: /projappl/project_2003682/$USER/Notebook/bin  (please replace $USER with your CSC username)
+    Custom Python interpreter: /projappl/project_2003682/$USER/Notebook/bin/python  (please replace $USER with your CSC username)
     Working directory: /scratch/project_2003682/  
     and finally "Launch" notebook  
    
