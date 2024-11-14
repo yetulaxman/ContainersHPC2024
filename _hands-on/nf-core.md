@@ -10,7 +10,7 @@ title: Tutorial4 - Run nf-core pipelines at CSC
 
 In this tutorial, you will learn to: 
  - gain some understanding of [nf-core pipelines](https://nf-co.re/) 
- - Deploy a nf-core pipeline as a batch job
+ - deploy a nf-core pipeline as a batch job
 
 💬 nf-core is a community effort to collect a curated set of analysis pipelines built using Nextflow. nf-core facilitates  standardisation of Nextflow pipelines with best practices, guidelines, and templates for bioinformatics community. These workflows are modular, scalable, and portable. Here we use [single-cell RNA-seq pipeline](https://github.com/nf-core/scrnaseq/tree/2.7.1) as an example nf-core pipeline.
 
